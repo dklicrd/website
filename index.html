@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DKLIC PLUS INVESTMENT</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DKLIC PLUS INVESTMENT</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -31,125 +32,260 @@
             },
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        
+        /* Estilos para el menú desplegable */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 220px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark .dropdown-menu {
+            background: rgba(30, 41, 59, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            color: #334155;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .dark .menu-item {
+            color: #cbd5e1;
+        }
+        
+        .menu-item:hover {
+            background: rgba(0, 119, 200, 0.08);
+            color: #0077c8;
+        }
+        
+        .dark .menu-item:hover {
+            background: rgba(0, 119, 200, 0.15);
+        }
+        
+        .menu-item .material-symbols-outlined {
+            font-size: 18px;
+            margin-right: 12px;
+            color: #0077c8;
+        }
+        
+        .divider {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.08);
+            margin: 6px 0;
+        }
+        
+        .dark .divider {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .menu-button.active {
+            background: rgba(0, 119, 200, 0.1);
+        }
+        
+        .dark .menu-button.active {
+            background: rgba(0, 119, 200, 0.2);
+        }
+    </style>
+</head>
 <body class="font-display bg-background-light dark:bg-background-dark">
 <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-<header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 p-4 backdrop-blur-sm">
-<div class="flex items-center gap-2">
-<img alt="Company logo" class="h-8" src="image/dklic-PI-White-Blue.jpg"/>
+    <header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 p-4 backdrop-blur-sm">
+        <div class="flex items-center gap-2">
+            <img alt="Company logo" class="h-8" src="image/dklic-PI-White-Blue.jpg"/>
+        </div>
+        
+        <!-- Menú desplegable mejorado -->
+        <div class="relative">
+            <button id="menuButton" class="menu-button flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-slate-900 dark:text-slate-50 transition-all duration-300">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+            
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="#" class="menu-item">
+                    <span class="material-symbols-outlined">home</span>
+                    Inicio
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="material-symbols-outlined">groups</span>
+                    Nosotros
+                </a>
+                
+                <div class="divider"></div>
+                
+                <a href="#" class="menu-item">
+                    <span class="material-symbols-outlined">category</span>
+                    Categorías de Productos
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="material-symbols-outlined">description</span>
+                    Detalles de Productos
+                </a>
+                
+                <div class="divider"></div>
+                
+                <a href="#" class="menu-item">
+                    <span class="material-symbols-outlined">request_quote</span>
+                    Cotizar
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="material-symbols-outlined">contact_support</span>
+                    Contáctanos
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="@container">
+            <div class="@[480px]:p-4">
+                <div class="flex min-h-[480px] flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-4 @[480px]:gap-8 @[480px]:rounded-xl" data-alt="Sleek glass partition system in a modern office building" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGKo2lj5tHQHm2fxUrF18P6ueuridVi0JQXI6iQUS1HqcZuTq7wC5wMf4S5lS6wgONgAg7w_BAP1ujXGQoyMdDzUXCXEuqZ4iJ4Ou2HUlhbCH2jWfvDnpJjcT6YztyCpUbvkYU0uD0a_tfpsco5vTvLDwMarBpdCWsK9oe_Rvwn-CUYr1IwBo6OgR_McpAsZEHXCBry-SvvIlYQkhhazj830lVS9HwWy7G1CxgysumWBgj_I2ZQZoMHIwviZ0Qq_KWjcZq2Euk5C8");'>
+                    <div class="flex flex-col gap-2 text-center">
+                        <h1 class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-5xl uppercase">Transforming Spaces with Modern Finishes</h1>
+                        <h2 class="text-white/90 text-sm font-normal leading-normal @[480px]:text-base">Specializing in high-end commercial and hotel finishing solutions.</h2>
+                    </div>
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 text-sm font-bold tracking-wide @[480px]:h-12 @[480px]:px-5 @[480px]:text-base bg-primary text-white hover:bg-primary/90 transition-colors uppercase">
+                        <span class="truncate">View Our Products</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <section class="py-12 px-4">
+            <h4 class="text-center text-sm font-bold uppercase tracking-widest text-primary/80 dark:text-primary/70">Our Mission</h4>
+            <p class="mx-auto mt-4 max-w-2xl text-center text-base font-normal leading-relaxed text-slate-700 dark:text-slate-300">
+                Our mission is to deliver innovative, high-quality, and functional finishing solutions that redefine spaces. We are committed to precision engineering, durable materials, and expert installation for every project.
+            </p>
+        </section>
+        
+        <section class="bg-background-light dark:bg-background-dark px-4 py-12">
+            <h2 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase">Product Categories</h2>
+            <div class="mt-8 grid grid-cols-2 gap-4">
+                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Modern glass partitions in a bright office space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3CoJE2tohs6UHo1oCmzXLfGD3-Oxf-CWhBFz8rBxiHoSq3sKftXOgeCjSfBIF2nrhX2GF3UHdevuhpPEtywrNtwMpg3pz-xv2BCh6dziwjFbkUsLBxcxYrvgfjB9m1rocmqwsBF5x4jJ4df4IIqLOGvoZeAjzNMT_kwZqvDHBOvylOOPCwpPzcMi8l41I-31svtWhbxCxTdMZA41gpszMf0xc_Ytxj9t6xVuFaRLacaXSyE-unfb4Jh4fLDNB6iNdFZdkRq9JCg"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Glass Partitions</h3>
+                </div>
+                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Sleek black metal door with a modern handle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMuxsdOSjRAzvHwnHVxmz8-qIsxTlvyLsev_TpLHMQwF8eFYGCQcWBEPebM929UVRGe9NUtxmcR9oVUFzX9a2MoG82f-tcBLWmEr6prZ1rqSzk3tmSdXlAOwVzAKa51gRNBo-5UbUre3_ZtdUJlZhjBwDVlq5wHDS4mIRfPJCSqFVZL4YQMo8wd7qZ73kBkX_8ERlzGFFNSBD58wG7VmsQ3u8ntLOgcZRDnddwZp8FQGsmHAZXGnJOQN0WQKXx8fRqPL7LSWzETXY"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Metal Doors</h3>
+                </div>
+                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Luxurious hotel room interior with elegant finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeC0t0q1JHYYBWJ0_fIH0zY9qxOrBJMVbM3KteCeW5OCP1yRnLC5VOzh_ox3UGYnKnTgPaeiAgnfEwT65hqBNTlLNBzcYe8ImZSgFoMLaVeeYnTumr8byAhy1x4WnYGS1CJaaguabF_Jf51CPd4XCsHc2wox18aACAIKcEso0P-_n1TlLlbnc6JTkGDVY3vAY6M0I0L5-zdKt5ayML2A8A4Scj0tq4Xb0nBP5eZnNLg_BzP_c2KASmkjDrBHz-40z7y0N40NTle2E"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Hotel Products</h3>
+                </div>
+                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A person using a smart lock on a modern door" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0osKngmkxup8FJAceM6v-MD3MwtLbJIg49zZQgICWGlAhmrly5ttbgfXsr8kQ44rgVSdkWNByWT4nw7Wvla8kqZyMmF_DdMmztR7Th8_Bcli93bhcdpnmy8-h4VF2KwhmYqmGrWMEk92SYaUeSY9AYAq0VPXnbTXXuEk1QSg1W-M5i3lLF-1UsP9Uz1NliR3G3vu7iyZyuErGCa7OBo_ZMhAGyPP1sVamsRjhWen1TCIgimDj5obQbz4xLopdtW9B4O0NW0v_Bz4"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Smart Locks</h3>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-slate-100 dark:bg-slate-900/50 px-4 py-16">
+            <h2 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase">Why Choose Us</h2>
+            <div class="mt-10 grid gap-8">
+                <div class="flex flex-col items-center text-center">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                        <span class="material-symbols-outlined text-2xl">architecture</span>
+                    </div>
+                    <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Precision Engineering</h3>
+                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Meticulous attention to detail ensures flawless results in every component.</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                        <span class="material-symbols-outlined text-2xl">verified</span>
+                    </div>
+                    <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Durable Materials</h3>
+                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">We source only the highest-quality materials for longevity and performance.</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                        <span class="material-symbols-outlined text-2xl">construction</span>
+                    </div>
+                    <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Expert Installation</h3>
+                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Our skilled teams guarantee seamless and efficient project completion.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-background-dark text-slate-300 px-4 pt-12 pb-8">
+        <div class="flex flex-col items-center text-center">
+            <div class="flex items-center gap-2">
+                <img alt="Company logo" class="h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLw2opXUKBOO6dKn5uNW6nbEhZzSCEZsYxFRk8QpryICyW8mwLOMhvGWJxHsV_oXiXCMrdxEMR0B-b020T3f6pczu9bbhYYQyu5HmhISJYyqyw7l6g5Sp911F7-7F3jSev1stvpznF60yP6KD3OMUaKrPXLKu5y7SWkEu1tGmvO0rU5yljDiebxPZwftK-1KMa5MrudcRo9CPZAEY4MPUvbgdROcnLQsZJjPWrRhAJ_D0mk3DF26fy_8I2VySAL80LOtaZPNVCyiU"/>
+            </div>
+            <p class="mt-4 text-sm max-w-xs">Precision in Every Detail. Your partner in modern construction finishes.</p>
+            <div class="mt-8 flex gap-6">
+                <a class="text-slate-300 hover:text-primary transition-colors" href="#">
+                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+                </a>
+                <a class="text-slate-300 hover:text-primary transition-colors" href="#">
+                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+                </a>
+                <a class="text-slate-300 hover:text-primary transition-colors" href="#">
+                    <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12.019c0 4.438 2.805 8.209 6.645 9.479.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.726.59-3.3-1.319-3.3-1.319-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.019C22 6.477 17.523 2 12 2z" fill-rule="evenodd"></path></svg>
+                </a>
+            </div>
+            <div class="mt-8 border-t border-slate-700 pt-6 text-xs text-slate-500">
+                <p>© 2024 Finishing Co. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </div>
-<button class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-slate-900 dark:text-slate-50">
-<span class="material-symbols-outlined text-3xl">menu</span>
-</button>
-</header>
-<main>
-<div class="@container">
-<div class="@[480px]:p-4">
-<div class="flex min-h-[480px] flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-4 @[480px]:gap-8 @[480px]:rounded-xl" data-alt="Sleek glass partition system in a modern office building" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGKo2lj5tHQHm2fxUrF18P6ueuridVi0JQXI6iQUS1HqcZuTq7wC5wMf4S5lS6wgONgAg7w_BAP1ujXGQoyMdDzUXCXEuqZ4iJ4Ou2HUlhbCH2jWfvDnpJjcT6YztyCpUbvkYU0uD0a_tfpsco5vTvLDwMarBpdCWsK9oe_Rvwn-CUYr1IwBo6OgR_McpAsZEHXCBry-SvvIlYQkhhazj830lVS9HwWy7G1CxgysumWBgj_I2ZQZoMHIwviZ0Qq_KWjcZq2Euk5C8");'>
-<div class="flex flex-col gap-2 text-center">
-<h1 class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-5xl uppercase">Transforming Spaces with Modern Finishes</h1>
-<h2 class="text-white/90 text-sm font-normal leading-normal @[480px]:text-base">Specializing in high-end commercial and hotel finishing solutions.</h2>
-</div>
-<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 text-sm font-bold tracking-wide @[480px]:h-12 @[480px]:px-5 @[480px]:text-base bg-primary text-white hover:bg-primary/90 transition-colors uppercase">
-<span class="truncate">View Our Products</span>
-</button>
-</div>
-</div>
-</div>
-<section class="py-12 px-4">
-<h4 class="text-center text-sm font-bold uppercase tracking-widest text-primary/80 dark:text-primary/70">Our Mission</h4>
-<p class="mx-auto mt-4 max-w-2xl text-center text-base font-normal leading-relaxed text-slate-700 dark:text-slate-300">
-                    Our mission is to deliver innovative, high-quality, and functional finishing solutions that redefine spaces. We are committed to precision engineering, durable materials, and expert installation for every project.
-                </p>
-</section>
-<section class="bg-background-light dark:bg-background-dark px-4 py-12">
-<h2 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase">Product Categories</h2>
-<div class="mt-8 grid grid-cols-2 gap-4">
-<div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-<img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Modern glass partitions in a bright office space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3CoJE2tohs6UHo1oCmzXLfGD3-Oxf-CWhBFz8rBxiHoSq3sKftXOgeCjSfBIF2nrhX2GF3UHdevuhpPEtywrNtwMpg3pz-xv2BCh6dziwjFbkUsLBxcxYrvgfjB9m1rocmqwsBF5x4jJ4df4IIqLOGvoZeAjzNMT_kwZqvDHBOvylOOPCwpPzcMi8l41I-31svtWhbxCxTdMZA41gpszMf0xc_Ytxj9t6xVuFaRLacaXSyE-unfb4Jh4fLDNB6iNdFZdkRq9JCg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<h3 class="relative p-4 text-base font-bold text-white uppercase">Glass Partitions</h3>
-</div>
-<div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-<img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Sleek black metal door with a modern handle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMuxsdOSjRAzvHwnHVxmz8-qIsxTlvyLsev_TpLHMQwF8eFYGCQcWBEPebM929UVRGe9NUtxmcR9oVUFzX9a2MoG82f-tcBLWmEr6prZ1rqSzk3tmSdXlAOwVzAKa51gRNBo-5UbUre3_ZtdUJlZhjBwDVlq5wHDS4mIRfPJCSqFVZL4YQMo8wd7qZ73kBkX_8ERlzGFFNSBD58wG7VmsQ3u8ntLOgcZRDnddwZp8FQGsmHAZXGnJOQN0WQKXx8fRqPL7LSWzETXY"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<h3 class="relative p-4 text-base font-bold text-white uppercase">Metal Doors</h3>
-</div>
-<div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-<img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Luxurious hotel room interior with elegant finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeC0t0q1JHYYBWJ0_fIH0zY9qxOrBJMVbM3KteCeW5OCP1yRnLC5VOzh_ox3UGYnKnTgPaeiAgnfEwT65hqBNTlLNBzcYe8ImZSgFoMLaVeeYnTumr8byAhy1x4WnYGS1CJaaguabF_Jf51CPd4XCsHc2wox18aACAIKcEso0P-_n1TlLlbnc6JTkGDVY3vAY6M0I0L5-zdKt5ayML2A8A4Scj0tq4Xb0nBP5eZnNLg_BzP_c2KASmkjDrBHz-40z7y0N40NTle2E"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<h3 class="relative p-4 text-base font-bold text-white uppercase">Hotel Products</h3>
-</div>
-<div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-<img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A person using a smart lock on a modern door" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0osKngmkxup8FJAceM6v-MD3MwtLbJIg49zZQgICWGlAhmrly5ttbgfXsr8kQ44rgVSdkWNByWT4nw7Wvla8kqZyMmF_DdMmztR7Th8_Bcli93bhcdpnmy8-h4VF2KwhmYqmGrWMEk92SYaUeSY9AYAq0VPXnbTXXuEk1QSg1W-M5i3lLF-1UsP9Uz1NliR3G3vu7iyZyuErGCa7OBo_ZMhAGyPP1sVamsRjhWen1TCIgimDj5obQbz4xLopdtW9B4O0NW0v_Bz4"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<h3 class="relative p-4 text-base font-bold text-white uppercase">Smart Locks</h3>
-</div>
-</div>
-</section>
-<section class="bg-slate-100 dark:bg-slate-900/50 px-4 py-16">
-<h2 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase">Why Choose Us</h2>
-<div class="mt-10 grid gap-8">
-<div class="flex flex-col items-center text-center">
-<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
-<span class="material-symbols-outlined text-2xl">architecture</span>
-</div>
-<h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Precision Engineering</h3>
-<p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Meticulous attention to detail ensures flawless results in every component.</p>
-</div>
-<div class="flex flex-col items-center text-center">
-<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
-<span class="material-symbols-outlined text-2xl">verified</span>
-</div>
-<h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Durable Materials</h3>
-<p class="mt-1 text-sm text-slate-600 dark:text-slate-400">We source only the highest-quality materials for longevity and performance.</p>
-</div>
-<div class="flex flex-col items-center text-center">
-<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
-<span class="material-symbols-outlined text-2xl">construction</span>
-</div>
-<h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Expert Installation</h3>
-<p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Our skilled teams guarantee seamless and efficient project completion.</p>
-</div>
-</div>
-</section>
-</main>
-<footer class="bg-background-dark text-slate-300 px-4 pt-12 pb-8">
-<div class="flex flex-col items-center text-center">
-<div class="flex items-center gap-2">
-<img alt="Company logo" class="h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLw2opXUKBOO6dKn5uNW6nbEhZzSCEZsYxFRk8QpryICyW8mwLOMhvGWJxHsV_oXiXCMrdxEMR0B-b020T3f6pczu9bbhYYQyu5HmhISJYyqyw7l6g5Sp911F7-7F3jSev1stvpznF60yP6KD3OMUaKrPXLKu5y7SWkEu1tGmvO0rU5yljDiebxPZwftK-1KMa5MrudcRo9CPZAEY4MPUvbgdROcnLQsZJjPWrRhAJ_D0mk3DF26fy_8I2VySAL80LOtaZPNVCyiU"/>
-</div>
-<p class="mt-4 text-sm max-w-xs">Precision in Every Detail. Your partner in modern construction finishes.</p>
-<div class="mt-8 flex gap-6">
-<a class="text-slate-300 hover:text-primary transition-colors" href="#">
-<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
-</a>
-<a class="text-slate-300 hover:text-primary transition-colors" href="#">
-<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-</a>
-<a class="text-slate-300 hover:text-primary transition-colors" href="#">
-<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12.019c0 4.438 2.805 8.209 6.645 9.479.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.726.59-3.3-1.319-3.3-1.319-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.019C22 6.477 17.523 2 12 2z" fill-rule="evenodd"></path></svg>
-</a>
-</div>
-<div class="mt-8 border-t border-slate-700 pt-6 text-xs text-slate-500">
-<p>© 2024 Finishing Co. All rights reserved.</p>
-</div>
-</div>
-</footer>
-</div>
-</body></html>
+
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    
+    menuButton.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('show');
+        menuButton.classList.toggle('active');
+    });
+    
+    // Cerrar el menú al hacer clic fuera de él
+    document.addEventListener('click', function(event) {
+        if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+            menuButton.classList.remove('active');
+        }
+    });
+</script>
+</body>
+</html>

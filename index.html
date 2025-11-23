@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="es">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>DKLIC PLUS INVESTMENT</title>
+    <title>DKLIC PLUS INVESTMENT - Soluciones en Acabados de Construcción</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -35,11 +35,6 @@
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-    <style>
-        body {
-            min-height: max(884px, 100dvh);
         }
         
         /* Estilos para el menú desplegable */
@@ -120,127 +115,552 @@
         .dark .menu-button.active {
             background: rgba(0, 119, 200, 0.2);
         }
+        
+        /* Estilos para navegación suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Estilos para secciones activas */
+        section {
+            scroll-margin-top: 80px;
+        }
+        
+        /* Indicador visual de sección activa */
+        .active-section {
+            border-left: 4px solid #0077c8;
+            padding-left: 12px;
+        }
+        
+        /* Header siempre visible y con mejor contraste */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .main-header {
+            background: rgba(16, 25, 34, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .main-header.scrolled {
+            background: rgba(16, 25, 34, 0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Botón de volver al inicio */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0077c8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 119, 200, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #0066ad;
+            transform: translateY(-2px);
+        }
+        
+        /* Indicador de progreso de scroll */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #0077c8, #00a8ff);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
     </style>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark">
-<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-    <header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 p-4 backdrop-blur-sm">
-        <div class="flex items-center gap-2">
-            <img alt="Company logo" class="h-8" src="image/dklic-PI-White-Blue.jpg"/>
-        </div>
-        
-        <!-- Menú desplegable mejorado -->
-        <div class="relative">
-            <button id="menuButton" class="menu-button flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-slate-900 dark:text-slate-50 transition-all duration-300">
-                <span class="material-symbols-outlined text-3xl">menu</span>
-            </button>
+    <!-- Indicador de progreso de scroll -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Header con navegación - SIEMPRE VISIBLE -->
+    <header class="main-header" id="mainHeader">
+        <div class="flex items-center justify-between p-4">
+            <!-- Logo que también funciona como enlace a Inicio -->
+            <a href="#inicio" class="flex items-center gap-2 nav-link" data-section="inicio">
+                <img alt="Company logo" class="h-8" src="image/dklic-PI-White-Blue.jpg"/>
+                <span class="hidden sm:inline-block text-slate-900 dark:text-slate-50 font-bold text-lg">DKLIC PLUS</span>
+            </a>
             
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="index.html" class="menu-item">
-                    <span class="material-symbols-outlined">home</span>
-                    Inicio
-                </a>
-                <a href="about.html" class="menu-item">
-                    <span class="material-symbols-outlined">groups</span>
-                    Nosotros
-                </a>
+            <!-- Menú desplegable mejorado -->
+            <div class="relative">
+                <button id="menuButton" class="menu-button flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-slate-900 dark:text-slate-50 transition-all duration-300">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
                 
-                <div class="divider"></div>
-                
-                <a href="products_category.html" class="menu-item">
-                    <span class="material-symbols-outlined">category</span>
-                    Categorías de Productos
-                </a>
-                <a href="products_detalles.html" class="menu-item">
-                    <span class="material-symbols-outlined">description</span>
-                    Detalles de Productos
-                </a>
-                
-                <div class="divider"></div>
-                
-                <a href="cotizar.html" class="menu-item">
-                    <span class="material-symbols-outlined">request_quote</span>
-                    Cotizar
-                </a>
-                <a href="contatc.html" class="menu-item">
-                    <span class="material-symbols-outlined">contact_support</span>
-                    Contáctanos
-                </a>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#inicio" class="menu-item nav-link" data-section="inicio">
+                        <span class="material-symbols-outlined">home</span>
+                        Inicio
+                    </a>
+                    <a href="#nosotros" class="menu-item nav-link" data-section="nosotros">
+                        <span class="material-symbols-outlined">groups</span>
+                        Nosotros
+                    </a>
+                    
+                    <div class="divider"></div>
+                    
+                    <a href="#categorias" class="menu-item nav-link" data-section="categorias">
+                        <span class="material-symbols-outlined">category</span>
+                        Categorías de Productos
+                    </a>
+                    <a href="#detalles" class="menu-item nav-link" data-section="detalles">
+                        <span class="material-symbols-outlined">description</span>
+                        Detalles de Productos
+                    </a>
+                    
+                    <div class="divider"></div>
+                    
+                    <a href="#cotizar" class="menu-item nav-link" data-section="cotizar">
+                        <span class="material-symbols-outlined">request_quote</span>
+                        Cotizar
+                    </a>
+                    <a href="#contactanos" class="menu-item nav-link" data-section="contactanos">
+                        <span class="material-symbols-outlined">contact_support</span>
+                        Contáctanos
+                    </a>
+                </div>
             </div>
         </div>
     </header>
     
+    <!-- Botón para volver al inicio -->
+    <a href="#inicio" class="back-to-top" id="backToTop">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </a>
+    
     <main>
-        <div class="@container">
-            <div class="@[480px]:p-4">
-                <div class="flex min-h-[480px] flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-4 @[480px]:gap-8 @[480px]:rounded-xl" data-alt="Sleek glass partition system in a modern office building" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGKo2lj5tHQHm2fxUrF18P6ueuridVi0JQXI6iQUS1HqcZuTq7wC5wMf4S5lS6wgONgAg7w_BAP1ujXGQoyMdDzUXCXEuqZ4iJ4Ou2HUlhbCH2jWfvDnpJjcT6YztyCpUbvkYU0uD0a_tfpsco5vTvLDwMarBpdCWsK9oe_Rvwn-CUYr1IwBo6OgR_McpAsZEHXCBry-SvvIlYQkhhazj830lVS9HwWy7G1CxgysumWBgj_I2ZQZoMHIwviZ0Qq_KWjcZq2Euk5C8");'>
-                    <div class="flex flex-col gap-2 text-center">
-                        <h1 class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-5xl uppercase">Transforming Spaces with Modern Finishes</h1>
-                        <h2 class="text-white/90 text-sm font-normal leading-normal @[480px]:text-base">Specializing in high-end commercial and hotel finishing solutions.</h2>
+        <!-- Sección INICIO -->
+        <section id="inicio" class="active-section">
+            <div class="@container pt-16">
+                <div class="@[480px]:p-4">
+                    <div class="flex min-h-[480px] flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat p-4 @[480px]:gap-8 @[480px]:rounded-xl" data-alt="Sleek glass partition system in a modern office building" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGKo2lj5tHQHm2fxUrF18P6ueuridVi0JQXI6iQUS1HqcZuTq7wC5wMf4S5lS6wgONgAg7w_BAP1ujXGQoyMdDzUXCXEuqZ4iJ4Ou2HUlhbCH2jWfvDnpJjcT6YztyCpUbvkYU0uD0a_tfpsco5vTvLDwMarBpdCWsK9oe_Rvwn-CUYr1IwBo6OgR_McpAsZEHXCBry-SvvIlYQkhhazj830lVS9HwWy7G1CxgysumWBgj_I2ZQZoMHIwviZ0Qq_KWjcZq2Euk5C8");'>
+                        <div class="flex flex-col gap-2 text-center">
+                            <h1 class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-5xl uppercase">Transformando Espacios con Acabados Modernos</h1>
+                            <h2 class="text-white/90 text-sm font-normal leading-normal @[480px]:text-base">Especializados en soluciones de acabado de alta gama para comercios y hoteles.</h2>
+                        </div>
+                        <a href="#categorias" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 text-sm font-bold tracking-wide @[480px]:h-12 @[480px]:px-5 @[480px]:text-base bg-primary text-white hover:bg-primary/90 transition-colors uppercase">
+                            <span class="truncate">Ver Nuestros Productos</span>
+                        </a>
                     </div>
-                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 text-sm font-bold tracking-wide @[480px]:h-12 @[480px]:px-5 @[480px]:text-base bg-primary text-white hover:bg-primary/90 transition-colors uppercase">
-                        <span class="truncate">View Our Products</span>
-                    </button>
                 </div>
             </div>
-        </div>
-        
-        <section class="py-12 px-4">
-            <h4 class="text-center text-sm font-bold uppercase tracking-widest text-primary/80 dark:text-primary/70">Our Mission</h4>
-            <p class="mx-auto mt-4 max-w-2xl text-center text-base font-normal leading-relaxed text-slate-700 dark:text-slate-300">
-                Our mission is to deliver innovative, high-quality, and functional finishing solutions that redefine spaces. We are committed to precision engineering, durable materials, and expert installation for every project.
-            </p>
+            
+            <section class="py-12 px-4">
+                <h4 class="text-center text-sm font-bold uppercase tracking-widest text-primary/80 dark:text-primary/70">Nuestra Misión</h4>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-base font-normal leading-relaxed text-slate-700 dark:text-slate-300">
+                    Nuestra misión es ofrecer soluciones de acabado innovadoras, de alta calidad y funcionales que redefinan los espacios. Estamos comprometidos con la ingeniería de precisión, materiales duraderos e instalación experta para cada proyecto.
+                </p>
+            </section>
         </section>
         
-        <section class="bg-background-light dark:bg-background-dark px-4 py-12">
-            <h2 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase">Product Categories</h2>
-            <div class="mt-8 grid grid-cols-2 gap-4">
-                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Modern glass partitions in a bright office space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3CoJE2tohs6UHo1oCmzXLfGD3-Oxf-CWhBFz8rBxiHoSq3sKftXOgeCjSfBIF2nrhX2GF3UHdevuhpPEtywrNtwMpg3pz-xv2BCh6dziwjFbkUsLBxcxYrvgfjB9m1rocmqwsBF5x4jJ4df4IIqLOGvoZeAjzNMT_kwZqvDHBOvylOOPCwpPzcMi8l41I-31svtWhbxCxTdMZA41gpszMf0xc_Ytxj9t6xVuFaRLacaXSyE-unfb4Jh4fLDNB6iNdFZdkRq9JCg"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Glass Partitions</h3>
+        <!-- Sección NOSOTROS -->
+        <section id="nosotros" class="py-12 bg-slate-50 dark:bg-slate-900/30">
+            <div class="container mx-auto px-4">
+                <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-bold leading-tight tracking-tight text-center uppercase mb-8">Sobre Nosotros</h2>
+                
+                <!-- Hero Section -->
+                <div class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-slate-50 rounded-xl min-h-80 mb-8" data-alt="Modern office interior with sleek glass partitions and elegant metal door frames" style='background-image: linear-gradient(0deg, rgba(10, 35, 66, 0.7) 0%, rgba(10, 35, 66, 0.1) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9Ojcv8D71gNhr_Qul2o3aKRQkYlnFFlwlTwtWF3t45-JP7UXpBt_zvbUps0A1eoMmFI3c-ruznpRG6NxgsEreWi75NvlnF0J0ewwJpt-5W7AV2B2FD5mN7mZJUPa1hakmGlv4dh20ABtlOhrrD6YjNzshaWIpTuItJTbc5Rq_T1GRFZM90HedlRmnZW2CCI04D7YpvP_eA4QyKjnAjJdt9jorW7uzocEEcPpdmymsr1Xh0svqaaV_QXLQ6tlubdhDvOx37cjBvfw");'>
+                    <div class="flex p-6"><h2 class="text-white tracking-tight text-[28px] font-bold leading-tight">Construyendo el Futuro del Acabado Interior</h2></div>
                 </div>
-                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Sleek black metal door with a modern handle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMuxsdOSjRAzvHwnHVxmz8-qIsxTlvyLsev_TpLHMQwF8eFYGCQcWBEPebM929UVRGe9NUtxmcR9oVUFzX9a2MoG82f-tcBLWmEr6prZ1rqSzk3tmSdXlAOwVzAKa51gRNBo-5UbUre3_ZtdUJlZhjBwDVlq5wHDS4mIRfPJCSqFVZL4YQMo8wd7qZ73kBkX_8ERlzGFFNSBD58wG7VmsQ3u8ntLOgcZRDnddwZp8FQGsmHAZXGnJOQN0WQKXx8fRqPL7LSWzETXY"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Metal Doors</h3>
+                
+                <!-- Our Story Section -->
+                <h3 class="text-slate-900 dark:text-slate-50 text-[22px] font-bold leading-tight tracking-tight pb-3">Nuestra Historia</h3>
+                <p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-relaxed pb-6">
+                    Desde un equipo dedicado de artesanos hasta un líder en acabados interiores, nuestro viaje se construye sobre una base de precisión, asociación y una búsqueda implacable de la innovación. Transformamos espacios con calidad incomparable.
+                </p>
+                
+                <!-- Mission & Vision Section -->
+                <h3 class="text-slate-900 dark:text-slate-50 text-[22px] font-bold leading-tight tracking-tight pb-3 pt-5">Misión y Visión</h3>
+                <div class="space-y-4 mb-8">
+                    <div class="p-4 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                        <h4 class="font-bold text-primary dark:text-primary mb-1">Nuestra Misión</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">Ofrecer soluciones excepcionales de acabado interior mediante artesanía superior, tecnología innovadora y compromiso inquebrantable con el cliente.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                        <h4 class="font-bold text-primary dark:text-primary mb-1">Nuestra Visión</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">Ser el referente de la industria en calidad y diseño en acabados de construcción especializados, creando entornos que inspiren.</p>
+                    </div>
                 </div>
-                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Luxurious hotel room interior with elegant finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeC0t0q1JHYYBWJ0_fIH0zY9qxOrBJMVbM3KteCeW5OCP1yRnLC5VOzh_ox3UGYnKnTgPaeiAgnfEwT65hqBNTlLNBzcYe8ImZSgFoMLaVeeYnTumr8byAhy1x4WnYGS1CJaaguabF_Jf51CPd4XCsHc2wox18aACAIKcEso0P-_n1TlLlbnc6JTkGDVY3vAY6M0I0L5-zdKt5ayML2A8A4Scj0tq4Xb0nBP5eZnNLg_BzP_c2KASmkjDrBHz-40z7y0N40NTle2E"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Hotel Products</h3>
+                
+                <!-- Core Values Section -->
+                <h3 class="text-slate-900 dark:text-slate-50 text-[22px] font-bold leading-tight tracking-tight pb-3">Nuestros Valores Fundamentales</h3>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                        <span class="material-symbols-outlined text-3xl text-primary dark:text-primary mb-2">verified</span>
+                        <span class="font-bold text-sm">Calidad</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                        <span class="material-symbols-outlined text-3xl text-primary dark:text-primary mb-2">lightbulb</span>
+                        <span class="font-bold text-sm">Innovación</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                        <span class="material-symbols-outlined text-3xl text-primary dark:text-primary mb-2">shield</span>
+                        <span class="font-bold text-sm">Integridad</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                        <span class="material-symbols-outlined text-3xl text-primary dark:text-primary mb-2">handshake</span>
+                        <span class="font-bold text-sm">Asociación</span>
+                    </div>
                 </div>
-                <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
-                    <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A person using a smart lock on a modern door" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0osKngmkxup8FJAceM6v-MD3MwtLbJIg49zZQgICWGlAhmrly5ttbgfXsr8kQ44rgVSdkWNByWT4nw7Wvla8kqZyMmF_DdMmztR7Th8_Bcli93bhcdpnmy8-h4VF2KwhmYqmGrWMEk92SYaUeSY9AYAq0VPXnbTXXuEk1QSg1W-M5i3lLF-1UsP9Uz1NliR3G3vu7iyZyuErGCa7OBo_ZMhAGyPP1sVamsRjhWen1TCIgimDj5obQbz4xLopdtW9B4O0NW0v_Bz4"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <h3 class="relative p-4 text-base font-bold text-white uppercase">Smart Locks</h3>
+                
+                <!-- Key Statistics Section -->
+                <div class="pt-4">
+                    <div class="grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-200 dark:bg-gray-800">
+                        <div class="bg-background-light dark:bg-background-dark/50 text-center p-4">
+                            <p class="text-3xl font-black text-primary dark:text-primary">15+</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Años de Experiencia</p>
+                        </div>
+                        <div class="bg-background-light dark:bg-background-dark/50 text-center p-4">
+                            <p class="text-3xl font-black text-primary dark:text-primary">500+</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Proyectos Realizados</p>
+                        </div>
+                        <div class="bg-background-light dark:bg-background-dark/50 text-center p-4">
+                            <p class="text-3xl font-black text-primary dark:text-primary">98%</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Satisfacción del Cliente</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         
-        <section class="bg-slate-100 dark:bg-slate-900/50 px-4 py-16">
-            <h2 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase">Why Choose Us</h2>
-            <div class="mt-10 grid gap-8">
-                <div class="flex flex-col items-center text-center">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
-                        <span class="material-symbols-outlined text-2xl">architecture</span>
+        <!-- Sección CATEGORÍAS DE PRODUCTOS -->
+        <section id="categorias" class="py-12 bg-background-light dark:bg-background-dark">
+            <div class="container mx-auto px-4">
+                <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-bold leading-tight tracking-tight text-center uppercase mb-8">Categorías de Productos</h2>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                        <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Modern glass partitions in a bright office space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3CoJE2tohs6UHo1oCmzXLfGD3-Oxf-CWhBFz8rBxiHoSq3sKftXOgeCjSfBIF2nrhX2GF3UHdevuhpPEtywrNtwMpg3pz-xv2BCh6dziwjFbkUsLBxcxYrvgfjB9m1rocmqwsBF5x4jJ4df4IIqLOGvoZeAjzNMT_kwZqvDHBOvylOOPCwpPzcMi8l41I-31svtWhbxCxTdMZA41gpszMf0xc_Ytxj9t6xVuFaRLacaXSyE-unfb4Jh4fLDNB6iNdFZdkRq9JCg"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <h3 class="relative p-4 text-base font-bold text-white uppercase">Particiones de Vidrio</h3>
                     </div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Precision Engineering</h3>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Meticulous attention to detail ensures flawless results in every component.</p>
+                    <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                        <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Sleek black metal door with a modern handle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMuxsdOSjRAzvHwnHVxmz8-qIsxTlvyLsev_TpLHMQwF8eFYGCQcWBEPebM929UVRGe9NUtxmcR9oVUFzX9a2MoG82f-tcBLWmEr6prZ1rqSzk3tmSdXlAOwVzAKa51gRNBo-5UbUre3_ZtdUJlZhjBwDVlq5wHDS4mIRfPJCSqFVZL4YQMo8wd7qZ73kBkX_8ERlzGFFNSBD58wG7VmsQ3u8ntLOgcZRDnddwZp8FQGsmHAZXGnJOQN0WQKXx8fRqPL7LSWzETXY"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <h3 class="relative p-4 text-base font-bold text-white uppercase">Puertas Metálicas</h3>
+                    </div>
+                    <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                        <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Luxurious hotel room interior with elegant finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeC0t0q1JHYYBWJ0_fIH0zY9qxOrBJMVbM3KteCeW5OCP1yRnLC5VOzh_ox3UGYnKnTgPaeiAgnfEwT65hqBNTlLNBzcYe8ImZSgFoMLaVeeYnTumr8byAhy1x4WnYGS1CJaaguabF_Jf51CPd4XCsHc2wox18aACAIKcEso0P-_n1TlLlbnc6JTkGDVY3vAY6M0I0L5-zdKt5ayML2A8A4Scj0tq4Xb0nBP5eZnNLg_BzP_c2KASmkjDrBHz-40z7y0N40NTle2E"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <h3 class="relative p-4 text-base font-bold text-white uppercase">Productos para Hoteles</h3>
+                    </div>
+                    <div class="group relative flex aspect-square flex-col justify-end overflow-hidden rounded-xl">
+                        <img class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A person using a smart lock on a modern door" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0osKngmkxup8FJAceM6v-MD3MwtLbJIg49zZQgICWGlAhmrly5ttbgfXsr8kQ44rgVSdkWNByWT4nw7Wvla8kqZyMmF_DdMmztR7Th8_Bcli93bhcdpnmy8-h4VF2KwhmYqmGrWMEk92SYaUeSY9AYAq0VPXnbTXXuEk1QSg1W-M5i3lLF-1UsP9Uz1NliR3G3vu7iyZyuErGCa7OBo_ZMhAGyPP1sVamsRjhWen1TCIgimDj5obQbz4xLopdtW9B4O0NW0v_Bz4"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <h3 class="relative p-4 text-base font-bold text-white uppercase">Cerraduras Inteligentes</h3>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
-                        <span class="material-symbols-outlined text-2xl">verified</span>
+                
+                <div class="mt-12">
+                    <h3 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight tracking-tight text-center uppercase mb-8">Por Qué Elegirnos</h3>
+                    <div class="grid gap-8">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                                <span class="material-symbols-outlined text-2xl">architecture</span>
+                            </div>
+                            <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Ingeniería de Precisión</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Atención meticulosa a los detalles garantiza resultados impecables en cada componente.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                                <span class="material-symbols-outlined text-2xl">verified</span>
+                            </div>
+                            <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Materiales Duraderos</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Utilizamos solo materiales de la más alta calidad para longevidad y rendimiento.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                                <span class="material-symbols-outlined text-2xl">construction</span>
+                            </div>
+                            <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Instalación Experta</h3>
+                            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Nuestros equipos especializados garantizan una finalización de proyecto perfecta y eficiente.</p>
+                        </div>
                     </div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Durable Materials</h3>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">We source only the highest-quality materials for longevity and performance.</p>
                 </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
-                        <span class="material-symbols-outlined text-2xl">construction</span>
+            </div>
+        </section>
+        
+        <!-- Sección DETALLES DE PRODUCTOS -->
+        <section id="detalles" class="py-12 bg-slate-100 dark:bg-slate-900/50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-bold leading-tight tracking-tight text-center uppercase mb-8">Detalles de Productos</h2>
+                
+                <!-- Producto destacado -->
+                <div class="bg-white dark:bg-background-dark/70 rounded-xl shadow-sm overflow-hidden mb-12">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <div class="w-full h-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Modern office with floor-to-ceiling acoustic glass partitions separating conference rooms." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBW9Md7-8sbi-P8XamZQqDoEf-7JovaapYUoEObdDm7fMNGmBCSoXOHDfOlXrVvE-9REKwCbo9lBXU5-AJ4-yMnNaWHttgEdWwMfRlBgz9GH4X4_nMsO6hoavgp8_GkS69xyryv5Nwhvl-F6AV51bX-WtHYmv_GCGq0q6mBZQug9vya9gABmc3JMSekTXHZFUFSe9mCSSdOapCwYZXg3o4ipkRgh9OhtNX0xRLLx-iVOEto4xHRLLmQsJW_rZvrVt4gkBNGeA1q0Fs");'></div>
+                        </div>
+                        <div class="md:w-1/2 p-6">
+                            <h3 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight mb-2">Partición Acústica de Vidrio AGP-45</h3>
+                            <p class="text-primary dark:text-primary/90 text-sm font-medium leading-normal mb-4">Categoría: Particiones de Vidrio</p>
+                            <p class="text-slate-700 dark:text-slate-300 text-base font-normal leading-relaxed mb-6">
+                                Nuestra serie AGP-45 ofrece un aislamiento acústico superior y una estética moderna y elegante. Ideal para crear entornos silenciosos y enfocados en oficinas, estudios y espacios comerciales sin sacrificar la luz natural.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <details class="group rounded-lg bg-slate-100 dark:bg-slate-900/50 p-4 [&_summary::-webkit-details-marker]:hidden">
+                                    <summary class="flex cursor-pointer items-center justify-between gap-1.5">
+                                        <h4 class="font-semibold text-slate-800 dark:text-slate-200">Características y Beneficios Principales</h4>
+                                        <span class="material-symbols-outlined transition group-open:rotate-180">expand_more</span>
+                                    </summary>
+                                    <div class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start gap-3">
+                                                <span class="material-symbols-outlined text-primary text-xl mt-0.5">volume_off</span>
+                                                <div>
+                                                    <h5 class="font-medium text-slate-800 dark:text-slate-200">Aislamiento Acústico Superior</h5>
+                                                    <p class="text-sm">Alta clasificación STC para privacidad y concentración.</p>
+                                                </div>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <span class="material-symbols-outlined text-primary text-xl mt-0.5">palette</span>
+                                                <div>
+                                                    <h5 class="font-medium text-slate-800 dark:text-slate-200">Acabados Personalizables</h5>
+                                                    <p class="text-sm">Amplia gama de colores de marco y tipos de vidrio.</p>
+                                                </div>
+                                            </li>
+                                            <li class="flex items-start gap-3">
+                                                <span class="material-symbols-outlined text-primary text-xl mt-0.5">construction</span>
+                                                <div>
+                                                    <h5 class="font-medium text-slate-800 dark:text-slate-200">Materiales Duraderos</h5>
+                                                    <p class="text-sm">Construido con aluminio de alta calidad y vidrio templado.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </details>
+                                
+                                <details class="group rounded-lg bg-slate-100 dark:bg-slate-900/50 p-4 [&_summary::-webkit-details-marker]:hidden">
+                                    <summary class="flex cursor-pointer items-center justify-between gap-1.5">
+                                        <h4 class="font-semibold text-slate-800 dark:text-slate-200">Especificaciones Técnicas</h4>
+                                        <span class="material-symbols-outlined transition group-open:rotate-180">expand_more</span>
+                                    </summary>
+                                    <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">
+                                        Espesor del Panel: 45mm<br/>
+                                        Altura Máxima: 3000mm<br/>
+                                        Clasificación Acústica: Hasta STC 42<br/>
+                                        Marco: Aluminio Anodizado<br/>
+                                        Vidrio: 10-12mm Templado o Laminado
+                                    </p>
+                                </details>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-50 uppercase">Expert Installation</h3>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Our skilled teams guarantee seamless and efficient project completion.</p>
+                </div>
+                
+                <!-- Otros productos -->
+                <h3 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight mb-6">Otros Productos Destacados</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-background-dark/70 rounded-lg shadow-sm overflow-hidden">
+                        <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A sleek, modern metal door with a vertical glass panel." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtdgLnfVGyWa-2zgheh0mw0ht3mYIQghfLduw4EOxtkx4GWZ2VlgtYJxEPeOPl7nfcZInFUG5YdGXHu6CQfAc0i58T6JUz-bKwoXo6mA3CIxRAvbNeQlVaQJvzy4YhegYyIUx4bx7B7gKqW2hF6hcLGt0HmF68oaU-Eyz5ADLOjGAKnKoEJmHXNnt93JTjpCHPgDbjFyO6sWw3J2mJHcmBLFuOW1d7rT3UgdQkD2qXktH7ImnYZYkFIgW4RLgyu9fxy4PrZum1iIs")'></div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Puertas Metálicas MD-20</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Seguridad y Estilo</p>
+                            <button class="mt-4 w-full bg-primary text-white font-medium py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors text-sm">Ver Detalles</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-background-dark/70 rounded-lg shadow-sm overflow-hidden">
+                        <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A hotel room door with a smart lock keypad." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVuNU2uWxAikgAkwRRmVmRtKLeNC4png2bLQM1IwWjmTHeFcL4bFn7qssaVQT5Z6Hsb1ijvVjmCTJ4LxfHoauysTEvPU-RM02fyuAhqzsHfbFranino_fO39yDkvCJQcCKFF7wdNLBuuk7IdU0jwzPkp7kNb-wiAQh5NmEEdFZM9uDS-pr-w4iLpF-n8sPSDfHUKj6MZQX3afGWJONC1GaNxGnO0n-s2U_Qz1o-cB1rnaPSWyLLh5R0-iSFoNT74neTaDIgNmn_mw")'></div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Cerraduras Inteligentes SL-500</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Acceso sin Llave</p>
+                            <button class="mt-4 w-full bg-primary text-white font-medium py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors text-sm">Ver Detalles</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-background-dark/70 rounded-lg shadow-sm overflow-hidden">
+                        <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="A series of clean, minimalist bathroom stalls made of composite material." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3uU8Yoe1TrlHfVjBZ5G-x0DQlcawjP5kx0XnEePf-czDzccMeN8K2LaWhQkVwwF1TE500SV09AK6cMIIow37NRt_UTVv5XeZnuwUzNDobcT8RB3NIGyDvqOlviYKn2rlArl0uWYgLn15xXafvYB83-tjHXre1zMTqTVkVTrYRN_ZIfX1ILd8v923R2UCQHcI9HjFFlp2LeQeu6WOxoBTm9uQApz4gbjcMGx6WUf4pGC-rUfun36fdvWjsRBb0rFpXL89IK5WmPA0")'></div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg text-slate-800 dark:text-slate-200">Divisiones de Baño</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Privacidad y Durabilidad</p>
+                            <button class="mt-4 w-full bg-primary text-white font-medium py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors text-sm">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección COTIZAR -->
+        <section id="cotizar" class="py-12 bg-white dark:bg-background-dark">
+            <div class="container mx-auto px-4">
+                <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-bold leading-tight tracking-tight text-center uppercase mb-8">Solicitar Cotización</h2>
+                
+                <div class="max-w-2xl mx-auto bg-slate-50 dark:bg-slate-900/50 p-6 rounded-xl shadow-sm">
+                    <p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal text-center mb-6">Complete el formulario y nos pondremos en contacto con usted para proporcionarle una cotización personalizada.</p>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="full-name">Nombre Completo</label>
+                            <input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-primary focus:ring-primary" id="full-name" name="full-name" placeholder="Juan Pérez" type="text" required/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="email">Email</label>
+                            <input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-primary focus:ring-primary" id="email" name="email" placeholder="usted@ejemplo.com" type="email" required/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="phone">Teléfono <span class="text-slate-500">(Opcional)</span></label>
+                            <input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-primary focus:ring-primary" id="phone" name="phone" placeholder="(123) 456-7890" type="tel"/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="company">Empresa</label>
+                            <input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-primary focus:ring-primary" id="company" name="company" placeholder="Nombre de su empresa" type="text"/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="project-type">Tipo de Proyecto</label>
+                            <select class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" id="project-type" name="project-type">
+                                <option value="">Seleccione una opción</option>
+                                <option value="commercial">Comercial</option>
+                                <option value="hotel">Hotel/Hospitalidad</option>
+                                <option value="office">Oficina</option>
+                                <option value="healthcare">Salud</option>
+                                <option value="education">Educación</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="product-interest">Producto de Interés</label>
+                            <select class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" id="product-interest" name="product-interest">
+                                <option value="">Seleccione una opción</option>
+                                <option value="glass-partitions">Particiones de Vidrio</option>
+                                <option value="metal-doors">Puertas Metálicas</option>
+                                <option value="hotel-products">Productos para Hoteles</option>
+                                <option value="smart-locks">Cerraduras Inteligentes</option>
+                                <option value="bathroom-divisions">Divisiones de Baño</option>
+                                <option value="acoustic-walls">Paredes Acústicas</option>
+                                <option value="multiple">Múltiples Productos</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="budget">Presupuesto Estimado</label>
+                            <select class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" id="budget" name="budget">
+                                <option value="">Seleccione una opción</option>
+                                <option value="under-10k">Menos de $10,000</option>
+                                <option value="10k-50k">$10,000 - $50,000</option>
+                                <option value="50k-100k">$50,000 - $100,000</option>
+                                <option value="over-100k">Más de $100,000</option>
+                                <option value="not-sure">No estoy seguro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="timeline">Plazo del Proyecto</label>
+                            <select class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" id="timeline" name="timeline">
+                                <option value="">Seleccione una opción</option>
+                                <option value="urgent">Urgente (1-2 semanas)</option>
+                                <option value="1-month">1 mes</option>
+                                <option value="1-3-months">1-3 meses</option>
+                                <option value="3-6-months">3-6 meses</option>
+                                <option value="over-6-months">Más de 6 meses</option>
+                                <option value="planning-stage">En etapa de planificación</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5" for="message">Detalles Adicionales</label>
+                            <textarea class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-primary focus:ring-primary" id="message" name="message" placeholder="Describa su proyecto, requisitos específicos, dimensiones aproximadas, etc." rows="4"></textarea>
+                        </div>
+                        <button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-xl hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-background-light dark:focus:ring-offset-background-dark transition-colors text-base" type="submit">Solicitar Cotización</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección CONTÁCTANOS -->
+        <section id="contactanos" class="py-12 bg-slate-100 dark:bg-slate-900/50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-bold leading-tight tracking-tight text-center uppercase mb-8">Contáctanos</h2>
+                
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal text-center mb-8">Nos encantaría conocer su proyecto. Póngase en contacto con nosotros.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl min-h-14 justify-between shadow-sm">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0 size-10">
+                                        <span class="material-symbols-outlined">call</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal flex-1 truncate">Llámanos</p>
+                                        <span class="text-slate-500 dark:text-slate-400 text-sm">(+1) 234-567-890</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl min-h-14 justify-between shadow-sm">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0 size-10">
+                                        <span class="material-symbols-outlined">mail</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal flex-1 truncate">Escríbenos</p>
+                                        <span class="text-slate-500 dark:text-slate-400 text-sm">contacto@dklic.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl min-h-14 shadow-sm">
+                                <div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0 size-10 mt-1">
+                                    <span class="material-symbols-outlined">location_on</span>
+                                </div>
+                                <p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed flex-1">123 Construction Ave, Suite 456<br/>Industry City, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <h3 class="text-slate-900 dark:text-slate-50 text-xl font-bold leading-tight">Nuestra Oficina</h3>
+                            <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+                                <img alt="Map showing the company's office location pinned in a city." class="h-full w-full object-cover" data-alt="Map showing the company's office location pinned in a city." data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDbz-KZKsvqkAak6woE-KW22fgC2u2IxJHzjES7493W9Qdv7oJfJYHRGIWg2uXxRViTZb5xMv_PFxPQu8IHGdtxbwgVD8iJyqHJhdSkuUFgKFuNrN8j0BodDaXzUqMnjHBFOVoKGTR9w7Iq9gmhVt46l0S6egZT8Oy-VyQCHvAGMZrxKHw6okCKt7trbXp8H44P8JTHXKgO0zRV0YRh4SrTh2qaLub0m0CgrVJ82jQUlqu-F0VbV3mlwJRaEODhFGINPQwMycHyTY"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h3 class="text-slate-900 dark:text-slate-50 text-2xl font-bold leading-tight text-center mb-6">Lo Que Dicen Nuestros Clientes</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-5 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                                <p class="text-slate-600 dark:text-slate-400 text-base italic leading-relaxed">"Su atención al detalle y compromiso con la calidad no tienen igual. Transformaron completamente nuestro espacio de oficina."</p>
+                                <p class="text-right text-sm font-bold text-primary dark:text-primary mt-3">- Alex Johnson, CEO de Innovate Inc.</p>
+                            </div>
+                            <div class="p-5 rounded-lg bg-white dark:bg-background-dark/50 border border-gray-200 dark:border-gray-800">
+                                <p class="text-slate-600 dark:text-slate-400 text-base italic leading-relaxed">"Profesionales, confiables y entregaron antes de lo programado. No podríamos estar más contentos con los resultados."</p>
+                                <p class="text-right text-sm font-bold text-primary dark:text-primary mt-3">- Sarah Chen, Gerente de Proyecto</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -251,7 +671,7 @@
             <div class="flex items-center gap-2">
                 <img alt="Company logo" class="h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLw2opXUKBOO6dKn5uNW6nbEhZzSCEZsYxFRk8QpryICyW8mwLOMhvGWJxHsV_oXiXCMrdxEMR0B-b020T3f6pczu9bbhYYQyu5HmhISJYyqyw7l6g5Sp911F7-7F3jSev1stvpznF60yP6KD3OMUaKrPXLKu5y7SWkEu1tGmvO0rU5yljDiebxPZwftK-1KMa5MrudcRo9CPZAEY4MPUvbgdROcnLQsZJjPWrRhAJ_D0mk3DF26fy_8I2VySAL80LOtaZPNVCyiU"/>
             </div>
-            <p class="mt-4 text-sm max-w-xs">Precision in Every Detail. Your partner in modern construction finishes.</p>
+            <p class="mt-4 text-sm max-w-xs">Precisión en Cada Detalle. Su socio en acabados de construcción modernos.</p>
             <div class="mt-8 flex gap-6">
                 <a class="text-slate-300 hover:text-primary transition-colors" href="#">
                     <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
@@ -264,27 +684,121 @@
                 </a>
             </div>
             <div class="mt-8 border-t border-slate-700 pt-6 text-xs text-slate-500">
-                <p>© 2024 Finishing Co. All rights reserved.</p>
+                <p>© 2024 DKLIC PLUS INVESTMENT. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 </div>
 
 <script>
+    // Funcionalidad del menú desplegable
     const menuButton = document.getElementById('menuButton');
     const dropdownMenu = document.getElementById('dropdownMenu');
+    const mainHeader = document.getElementById('mainHeader');
+    const backToTop = document.getElementById('backToTop');
+    const scrollProgress = document.getElementById('scrollProgress');
     
-    menuButton.addEventListener('click', function() {
+    menuButton.addEventListener('click', function(e) {
+        e.stopPropagation();
         dropdownMenu.classList.toggle('show');
         menuButton.classList.toggle('active');
     });
     
     // Cerrar el menú al hacer clic fuera de él
-    document.addEventListener('click', function(event) {
-        if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
-            menuButton.classList.remove('active');
+    document.addEventListener('click', function() {
+        dropdownMenu.classList.remove('show');
+        menuButton.classList.remove('active');
+    });
+    
+    // Prevenir que los clics dentro del menú cierren el menú
+    dropdownMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    // Efecto de scroll en el header
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            mainHeader.classList.add('scrolled');
+        } else {
+            mainHeader.classList.remove('scrolled');
         }
+        
+        // Mostrar/ocultar botón de volver al inicio
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+        
+        // Actualizar barra de progreso de scroll
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset;
+        const scrollPercent = (scrollTop) / (docHeight - winHeight);
+        const progressWidth = scrollPercent * 100;
+        scrollProgress.style.width = progressWidth + '%';
+    });
+    
+    // Navegación suave y detección de sección activa
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        
+        // Navegación suave
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Cerrar el menú desplegable en móviles
+                    dropdownMenu.classList.remove('show');
+                    menuButton.classList.remove('active');
+                    
+                    // Desplazamiento suave
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Detección de sección activa al hacer scroll
+        function checkActiveSection() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            // Actualizar enlaces activos
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Actualizar indicador visual en secciones
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+                if (section.getAttribute('id') === currentSection) {
+                    section.classList.add('active-section');
+                }
+            });
+        }
+        
+        // Verificar sección activa al cargar y al hacer scroll
+        window.addEventListener('scroll', checkActiveSection);
+        window.addEventListener('load', checkActiveSection);
     });
 </script>
 </body>

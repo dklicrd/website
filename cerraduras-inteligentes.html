@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html class="light" lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cerraduras Inteligentes | DKLIC PLUS INVESTMENT</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DKLIC PLUS INVESTMENT - Soluciones en Acabados de Construcción</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -33,71 +32,234 @@
             },
         }
     </script>
-    
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         
-        body {
-            min-height: max(884px, 100dvh);
-        }
-        
-        .product-image-container {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            position: relative;
-        }
-        
-        .product-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-image-container:hover img {
-            transform: scale(1.05);
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            background: #000;
-        }
-        
-        .video-wrapper video {
+        /* Estilos para el menú desplegable */
+        .dropdown-menu {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            top: 100%;
+            right: 0;
+            width: 220px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .feature-icon {
-            width: 48px;
-            height: 48px;
+        .dark .dropdown-menu {
+            background: rgba(30, 41, 59, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            color: #334155;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .dark .menu-item {
+            color: #cbd5e1;
+        }
+        
+        .menu-item:hover {
+            background: rgba(0, 119, 200, 0.08);
+            color: #0077c8;
+        }
+        
+        .dark .menu-item:hover {
+            background: rgba(0, 119, 200, 0.15);
+        }
+        
+        .menu-item .material-symbols-outlined {
+            font-size: 18px;
+            margin-right: 12px;
+            color: #0077c8;
+        }
+        
+        .divider {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.08);
+            margin: 6px 0;
+        }
+        
+        .dark .divider {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .menu-button.active {
+            background: rgba(0, 119, 200, 0.1);
+        }
+        
+        .dark .menu-button.active {
+            background: rgba(0, 119, 200, 0.2);
+        }
+        
+        /* Estilos para navegación suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Estilos para secciones activas */
+        section {
+            scroll-margin-top: 80px;
+        }
+        
+        /* Indicador visual de sección activa */
+        .active-section {
+            border-left: 4px solid #0077c8;
+            padding-left: 12px;
+        }
+        
+        /* Header siempre visible y con mejor contraste */
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .main-header {
+            background: rgba(16, 25, 34, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .main-header.scrolled {
+            background: rgba(16, 25, 34, 0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Botón de volver al inicio */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0077c8;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: rgba(0, 119, 200, 0.1);
-            color: #0077c8;
-            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 119, 200, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
         }
         
-        .dark .feature-icon {
-            background: rgba(0, 119, 200, 0.2);
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #0066ad;
+            transform: translateY(-2px);
+        }
+        
+        /* Indicador de progreso de scroll */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #0077c8, #00a8ff);
+            z-index: 1001;
+            transition: width 0.2s ease;
         }
     </style>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark">
+    <!-- Indicador de progreso de scroll -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Header con navegación - SIEMPRE VISIBLE -->
+    <header class="main-header" id="mainHeader">
+        <div class="flex items-center justify-between p-4">
+            <!-- Logo que también funciona como enlace a Inicio -->
+            <a href="#inicio" class="flex items-center gap-2 nav-link" data-section="inicio">
+                <img alt="Company logo" class="h-8" src="image/dklic-PI-White-Blue.jpg"/>
+                <span class="hidden sm:inline-block text-slate-900 dark:text-slate-50 font-bold text-lg">  </span>
+            </a>
+            
+            <!-- Menú desplegable mejorado -->
+            <div class="relative">
+                <button id="menuButton" class="menu-button flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-slate-900 dark:text-slate-50 transition-all duration-300">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+                
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#inicio" class="menu-item nav-link" data-section="inicio">
+                        <span class="material-symbols-outlined">home</span>
+                        Inicio
+                    </a>
+                    <a href="#nosotros" class="menu-item nav-link" data-section="nosotros">
+                        <span class="material-symbols-outlined">groups</span>
+                        Nosotros
+                    </a>
+                    
+                    <div class="divider"></div>
+                    
+                    <a href="#categorias" class="menu-item nav-link" data-section="categorias">
+                        <span class="material-symbols-outlined">category</span>
+                        Categorías de Productos
+                    </a>
+                    <a href="#detalles" class="menu-item nav-link" data-section="detalles">
+                        <span class="material-symbols-outlined">description</span>
+                        Detalles de Productos
+                    </a>
+                    
+                    <div class="divider"></div>
+                    
+                    <a href="#cotizar" class="menu-item nav-link" data-section="cotizar">
+                        <span class="material-symbols-outlined">request_quote</span>
+                        Cotizar
+                    </a>
+                    <a href="#contactanos" class="menu-item nav-link" data-section="contactanos">
+                        <span class="material-symbols-outlined">contact_support</span>
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Botón para volver al inicio -->
+    <a href="#inicio" class="back-to-top" id="backToTop">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </a>
     <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
         <!-- Header - Coherente con el sitio principal -->
         <header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 p-4 backdrop-blur-sm">

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerraduras Inteligentes DK-UltraPlus Slim | DKLIC PLUS INVESTMENT</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0077c8",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "accent": "#00b894",
+                    },
+                    fontFamily: {
+                        "display": ["Roboto", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(0, 184, 148, 0.5)' },
+                            '50%': { boxShadow: '0 0 15px rgba(0, 184, 148, 0.8)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: #0077c8;
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(0, 119, 200, 0.9) 0%, rgba(0, 184, 148, 0.8) 100%);
+        }
+        
+        .tech-feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 119, 200, 0.1);
+        }
+        
+        .tech-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 119, 200, 0.15);
+            border-color: rgba(0, 119, 200, 0.3);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            background: #000;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .comparison-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .comparison-table th, .dark .comparison-table td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .checkmark {
+            color: #00b894;
+            font-weight: bold;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: rgba(0, 119, 200, 0.1);
+        }
+        
+        .dark .feature-icon {
+            background: rgba(0, 119, 200, 0.2);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white">lock</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">DKLIC PLUS</h1>
+                        <p class="text-xs text-primary font-medium">Cerraduras Inteligentes</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="https://dklicrd.github.io/website/" class="hidden md:inline-flex items-center text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined mr-2">arrow_back</span>
+                        Volver al sitio principal
+                    </a>
+                    <a href="#contacto" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-md">
+                        Solicitar Cotización
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden">
+            <div class="absolute inset-0 gradient-overlay z-0"></div>
+            <div class="absolute inset-0 z-0 opacity-20">
+                <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+                <div class="absolute bottom-10 right-10 w-72 h-72 bg-accent rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 py-20 md:py-28 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="inline-flex items-center space-x-2 bg-white/20 dark:bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                        <span class="material-symbols-outlined text-white">new_releases</span>
+                        <span class="text-white font-medium text-sm">NUEVO PRODUCTO 2025</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight animate-fade-in">
+                        <span class="block">DK-UltraPlus</span>
+                        <span class="block text-accent">Slim Edition</span>
+                    </h1>
+                    
+                    <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-slide-up">
+                        La cerradura inteligente más avanzada y delgada del mercado. Seguridad de grado comercial con un diseño elegante para hogares y negocios.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+                        <a href="#caracteristicas" class="bg-white text-primary px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined mr-2">visibility</span>
+                            Ver Características
+                        </a>
+                        <a href="#contacto" class="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-accent/90 transition-colors shadow-lg flex items-center justify-center animate-pulse-glow">
+                            <span class="material-symbols-outlined mr-2">request_quote</span>
+                            Solicitar Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Slider -->
+        <section class="py-12 bg-gray-50 dark:bg-gray-900/30">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-white">Diseño Premium y Ultradelgado</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+                    Combinamos tecnología avanzada con un diseño elegante que se integra perfectamente en cualquier espacio
+                </p>
+                
+                <div class="max-w-5xl mx-auto">
+                    <div class="swiper" id="productSwiper">
+                        <div class="swiper-wrapper">
+                            <!-- Imágenes de la carpeta de Google Drive -->
+                            <div class="swiper-slide">
+                                <img src="https://drive.google.com/uc?export=view&id=REEMPLAZAR_CON_ID_1" alt="DK-UltraPlus Slim frontal" class="w-full h-96 object-cover">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://drive.google.com/uc?export=view&id=REEMPLAZAR_CON_ID_2" alt="DK-UltraPlus Slim perfil" class="w-full h-96 object-cover">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://drive.google.com/uc?export=view&id=REEMPLAZAR_CON_ID_3" alt="Instalación en puerta" class="w-full h-96 object-cover">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://drive.google.com/uc?export=view&id=REEMPLAZAR_CON_ID_4" alt="Panel de control" class="w-full h-96 object-cover">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    
+                    <div class="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                        <p>Nota: Para usar las imágenes de tu Google Drive, reemplaza "REEMPLAZAR_CON_ID_X" con los IDs reales de los archivos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section id="caracteristicas" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-white">Tecnología de Vanguardia</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+                    Características diseñadas para ofrecer la máxima seguridad, conveniencia y control
+                </p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="tech-feature-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                        <div class="feature-icon">
+                            <span class="material-symbols-outlined text-primary text-3xl">fingerprint</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Huella Digital</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Reconocimiento biométrico de alta precisión con sensor capacitivo de 360°
+                        </p>
+                    </div>
+                    
+                    <div class="tech-feature-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                        <div class="feature-icon">
+                            <span class="material-symbols-outlined text-primary text-3xl">smartphone</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Control por App</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Gestiona accesos, historial y configuraciones desde tu dispositivo móvil
+                        </p>
+                    </div>
+                    
+                    <div class="tech-feature-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                        <div class="feature-icon">
+                            <span class="material-symbols-outlined text-primary text-3xl">visibility_off</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Cifrado Militar</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Comunicación encriptada AES-256 para máxima protección contra hackeos
+                        </p>
+                    </div>
+                    
+                    <div class="tech-feature-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                        <div class="feature-icon">
+                            <span class="material-symbols-outlined text-primary text-3xl">battery_full</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Batería de Larga Duración</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Hasta 12 meses de autonomía con 4 pilas AA y carga de emergencia USB-C
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Comparison Table -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Comparativa de Modelos</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Descubre por qué DK-UltraPlus Slim es la mejor opción</p>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-900/50">
+                                    <th class="font-semibold">Característica</th>
+                                    <th class="font-semibold text-center">Modelo Estándar</th>
+                                    <th class="font-semibold text-center text-primary">DK-UltraPlus Slim</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-medium">Grosor del perfil</td>
+                                    <td class="text-center">25mm</td>
+                                    <td class="text-center font-bold text-primary">18mm</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Métodos de desbloqueo</td>
+                                    <td class="text-center">Huella, PIN, Tarjeta</td>
+                                    <td class="text-center font-bold text-primary">Huella, PIN, App, NFC, Llave Mecánica</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Conexión</td>
+                                    <td class="text-center">Bluetooth</td>
+                                    <td class="text-center font-bold text-primary">Wi-Fi + Bluetooth 5.2</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Resistencia al agua</td>
+                                    <td class="text-center">IP54</td>
+                                    <td class="text-center font-bold text-primary">IP65</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-medium">Garantía</td>
+                                    <td class="text-center">2 años</td>
+                                    <td class="text-center font-bold text-primary">5 años</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Demo Section -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-900/30">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-white">Vea la DK-UltraPlus Slim en Acción</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+                        Descubra la facilidad de instalación y uso en estos videos demostrativos
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="video-container mb-4">
+                                <video controls poster="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                    <source src="https://drive.google.com/uc?export=download&id=REEMPLAZAR_CON_ID_VIDEO_1" type="video/mp4">
+                                    Tu navegador no soporta el elemento de video.
+                                </video>
+                            </div>
+                            <p class="font-medium text-gray-900 dark:text-white">Instalación en 15 minutos</p>
+                        </div>
+                        
+                        <div>
+                            <div class="video-container mb-4">
+                                <video controls poster="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                                    <source src="https://drive.google.com/uc?export=download&id=REEMPLAZAR_CON_ID_VIDEO_2" type="video/mp4">
+                                    Tu navegador no soporta el elemento de video.
+                                </video>
+                            </div>
+                            <p class="font-medium text-gray-900 dark:text-white">Configuración de la aplicación móvil</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation & Specifications -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Fácil Instalación</h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            Diseñada para adaptarse a la mayoría de puertas estándar sin necesidad de modificaciones complejas.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <span class="material-symbols-outlined text-accent">check_circle</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Compatibilidad universal</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">Adecuada para puertas de 35-55mm de grosor</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <span class="material-symbols-outlined text-accent">check_circle</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Kit de instalación completo</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">Incluye todas las plantillas y herramientas necesarias</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <span class="material-symbols-outlined text-accent">check_circle</span>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900 dark:text-white">Soporte técnico incluido</h4>
+                                    <p class="text-gray-600 dark:text-gray-400">Asistencia remota para instalación incluida en la compra</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Especificaciones Técnicas</h2>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                            <div class="space-y-4">
+                                <div class="flex justify-between py-3 border-b border-gray-100 dark:border-gray-700">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Materiales</span>
+                                    <span class="font-bold">Aleación de zinc y aluminio anodizado</span>
+                                </div>
+                                
+                                <div class="flex justify-between py-3 border-b border-gray-100 dark:border-gray-700">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Temperatura de operación</span>
+                                    <span class="font-bold">-20°C a 60°C</span>
+                                </div>
+                                
+                                <div class="flex justify-between py-3 border-b border-gray-100 dark:border-gray-700">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Capacidad de huellas</span>
+                                    <span class="font-bold">Hasta 100 huellas dactilares</span>
+                                </div>
+                                
+                                <div class="flex justify-between py-3 border-b border-gray-100 dark:border-gray-700">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Códigos de acceso</span>
+                                    <span class="font-bold">Hasta 50 códigos únicos</span>
+                                </div>
+                                
+                                <div class="flex justify-between py-3">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Consumo energético</span>
+                                    <span class="font-bold">4x pilas AA (12+ meses)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contacto" class="py-20 bg-gradient-to-r from-primary to-accent text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-black mb-6">¿Listo para Actualizar su Seguridad?</h2>
+                    <p class="text-xl mb-10 text-white/90 max-w-2xl mx-auto">
+                        Obtenga una cotización personalizada o solicite una demostración en vivo de la DK-UltraPlus Slim
+                    </p>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-10 max-w-2xl mx-auto">
+                        <form id="quoteForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-left text-white mb-2 font-medium">Nombre Completo *</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-left text-white mb-2 font-medium">Correo Electrónico *</label>
+                                    <input type="email" required class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-left text-white mb-2 font-medium">Tipo de Proyecto</label>
+                                <select class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white">
+                                    <option value="" class="text-gray-800">Seleccione una opción</option>
+                                    <option value="residencial" class="text-gray-800">Residencial (Hogar)</option>
+                                    <option value="comercial" class="text-gray-800">Comercial (Oficina/Negocio)</option>
+                                    <option value="hotel" class="text-gray-800">Hotel/Hospitalidad</option>
+                                    <option value="multiple" class="text-gray-800">Múltiples unidades</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-left text-white mb-2 font-medium">Mensaje o Requisitos Específicos</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-white text-primary font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center">
+                                <span class="material-symbols-outlined mr-2">send</span>
+                                Solicitar Cotización Personalizada
+                            </button>
+                        </form>
+                        
+                        <div class="mt-8 pt-8 border-t border-white/20">
+                            <p class="text-white/80">
+                                <span class="material-symbols-outlined align-middle mr-2">schedule</span>
+                                <strong>Respuesta en menos de 24 horas</strong> • 
+                                <span class="material-symbols-outlined align-middle ml-4 mr-2">support_agent</span>
+                                Asesoría técnica incluida
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white">lock</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">DKLIC PLUS</h3>
+                            <p class="text-sm text-primary font-medium">Cerraduras Inteligentes</p>
+                        </div>
+                    </div>
+                    <p class="max-w-md text-gray-400">
+                        Líderes en soluciones de seguridad inteligente para hogares y negocios. 
+                        Transformando la seguridad con tecnología de vanguardia.
+                    </p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <h4 class="text-white font-bold mb-4">Contacto Directo</h4>
+                    <div class="space-y-2">
+                        <p class="flex items-center justify-center md:justify-end">
+                            <span class="material-symbols-outlined mr-2 text-primary">call</span>
+                            (+1) 234-567-890
+                        </p>
+                        <p class="flex items-center justify-center md:justify-end">
+                            <span class="material-symbols-outlined mr-2 text-primary">mail</span>
+                            cerraduras@dklic.com
+                        </p>
+                        <p class="flex items-center justify-center md:justify-end">
+                            <span class="material-symbols-outlined mr-2 text-primary">schedule</span>
+                            Lunes a Viernes: 8AM - 6PM
+                        </p>
+                    </div>
+                    
+                    <div class="mt-6 flex justify-center md:justify-end space-x-4">
+                        <a href="#" class="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-white text-lg">facebook</span>
+                        </a>
+                        <a href="#" class="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-white text-lg">instagram</span>
+                        </a>
+                        <a href="#" class="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-white text-lg">youtube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>© 2025 DKLIC PLUS INVESTMENT. Todos los derechos reservados. | <a href="https://dklicrd.github.io/website/" class="text-primary hover:text-accent transition-colors">Visite nuestro sitio principal</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Swiper
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('#productSwiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: 'slide',
+                speed: 600,
+            });
+            
+            // Form submission
+            document.getElementById('quoteForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const inputs = this.querySelectorAll('input[required], select[required], textarea[required]');
+                let valid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        valid = false;
+                        input.style.borderColor = '#f87171';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+                
+                if (valid) {
+                    // In a real scenario, you would send this data to a server
+                    alert('¡Gracias por su solicitud! Nos pondremos en contacto con usted en menos de 24 horas.');
+                    this.reset();
+                } else {
+                    alert('Por favor, complete todos los campos requeridos.');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
